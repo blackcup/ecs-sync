@@ -42,6 +42,8 @@ repositories {
 }
 
 dependencies {
+    // https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver
+    compile group: 'org.mongodb', name: 'mongo-java-driver', version: '3.4.2'
     compile files('lib/fplibrary-3.4.757.jar'),
             files('lib/security-1.1.jar'),
             "commons-cli:commons-cli:1.3.1",
@@ -91,10 +93,10 @@ shadowJar {
     }
 }
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
+/*task javadocJar(type: Jar, dependsOn: javadoc) {
     classifier = 'javadoc'
     from "${docsDir}/javadoc"
-}
+}*/
 
 task sourcesJar(type: Jar) {
     classifier = 'sources'
@@ -115,9 +117,9 @@ distributions {
             into('docker') {
                 from 'docker'
             }
-            into('doc') {
+            /*into('doc') {
                 from javadocJar
-            }
+            }*/
             into('src') {
                 from sourcesJar
             }
